@@ -9,7 +9,7 @@
 :root{
   --bg:#080c14;--surface:#0e1525;--card:#111d32;--card2:#162038;
   --border:#1c2e4a;--border2:#243856;--text:#d5e6f5;--muted:#4d6d8e;--dim:#1c2e4a;
-  --accent:#16d9c8;--accent-d:rgba(22,217,200,.12);--accent-b:rgba(22,217,200,.25);
+  --accent:#16d9c8;--accent-d:rgba(22,217,200,.12);
   --ok:#4ade9a;--ok-d:rgba(74,222,154,.12);--err:#ff6060;--err-d:rgba(255,96,96,.12);
   --warn:#ffc742;--warn-d:rgba(255,199,66,.12);--purple:#a78bfa;
 }
@@ -17,71 +17,80 @@
 body{background:var(--bg);color:var(--text);font-family:'Karla',sans-serif;font-size:15.5px;line-height:1.75;min-height:100vh;display:flex;flex-direction:column}
 #pw{position:fixed;top:0;left:0;right:0;height:3px;background:var(--dim);z-index:200}
 #pb{height:100%;background:linear-gradient(90deg,var(--accent),var(--purple));transition:width .4s ease}
-header{padding:14px 28px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:16px;flex-shrink:0}
-.ht{font-family:'Raleway',sans-serif;font-size:1rem;font-weight:800;letter-spacing:-.02em;color:var(--accent)}
-.hs{font-size:.75rem;color:var(--muted);font-style:italic}
-.spill{margin-left:auto;padding:4px 14px;border-radius:20px;font-family:'Raleway',sans-serif;font-size:.75rem;font-weight:700;background:var(--card2);border:1px solid var(--border2);color:var(--muted);transition:color .3s}
+header{padding:13px 22px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:14px;flex-shrink:0}
+.ht{font-family:'Raleway',sans-serif;font-size:.95rem;font-weight:800;letter-spacing:-.02em;color:var(--accent)}
+.hs{font-size:.72rem;color:var(--muted);font-style:italic}
+.spill{margin-left:auto;padding:4px 13px;border-radius:20px;font-family:'Raleway',sans-serif;font-size:.73rem;font-weight:700;background:var(--card2);border:1px solid var(--border2);color:var(--muted);transition:color .3s;white-space:nowrap}
 .shell{display:flex;flex:1;min-height:0;overflow:hidden}
-aside{width:220px;flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);overflow-y:auto;padding:20px 0}
-.sbl{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding:0 18px 10px}
-.sbi{padding:9px 18px;font-size:.8rem;color:var(--muted);display:flex;align-items:center;gap:9px;border-left:2px solid transparent;transition:all .2s}
-.sbi.active{color:var(--accent);border-left-color:var(--accent);background:var(--accent-d)}
-.sbi.done{color:var(--ok)}
-.sbd{width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0}
-main{flex:1;overflow-y:auto;padding:36px 28px;display:flex;justify-content:center;align-items:flex-start}
-.card{width:100%;max-width:740px;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:38px 42px;animation:pop .28s ease}
-@keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+aside{width:234px;flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);overflow-y:auto;padding:14px 0 20px}
+.sbl{font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding:0 16px 10px}
+.sb-sec{margin-bottom:2px}
+.sb-head{padding:7px 16px 3px;font-size:.76rem;font-weight:700;color:var(--muted);cursor:pointer;transition:color .2s,border-color .2s;display:flex;align-items:center;gap:7px;border-left:2px solid transparent}
+.sb-head:hover{color:var(--text)}
+.sb-head.active{color:var(--accent);border-left-color:var(--accent)}
+.sb-head.done{color:var(--ok)}
+.sb-secdot{width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0}
+.sb-nodes{display:flex;flex-wrap:wrap;gap:3px;padding:3px 16px 8px}
+.sbn{width:22px;height:20px;border-radius:4px;font-size:.58rem;font-weight:800;font-family:'Raleway',sans-serif;display:flex;align-items:center;justify-content:center;cursor:pointer;border:1.5px solid transparent;transition:all .15s;background:var(--card2);color:var(--muted)}
+.sbn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-d)}
+.sbn.sbn-cur{border-color:var(--accent) !important;color:var(--accent) !important;background:var(--accent-d) !important}
+.sbn.sbn-lesson{color:rgba(167,139,250,.75)}
+.sbn.sbn-correct{background:var(--ok-d);color:var(--ok);border-color:rgba(74,222,154,.35)}
+.sbn.sbn-wrong{background:var(--err-d);color:var(--err);border-color:rgba(255,96,96,.35)}
+main{flex:1;overflow-y:auto;padding:32px 24px;display:flex;justify-content:center;align-items:flex-start}
+.card{width:100%;max-width:740px;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:36px 40px;animation:pop .25s ease}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}
-.badge{display:inline-flex;align-items:center;gap:6px;padding:3px 11px;border-radius:20px;font-family:'Raleway',sans-serif;font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:20px;font-family:'Raleway',sans-serif;font-size:.63rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
 .bl{background:rgba(167,139,250,.14);color:var(--purple)}
 .bq{background:var(--warn-d);color:var(--warn)}
 .bm{background:var(--ok-d);color:var(--ok)}
-.btn-new{padding:4px 12px;border-radius:8px;font-family:'Raleway',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.04em;border:1px solid var(--border2);background:var(--card2);color:var(--muted);cursor:pointer;transition:all .2s;white-space:nowrap}
+.btn-new{padding:4px 11px;border-radius:7px;font-family:'Raleway',sans-serif;font-size:.66rem;font-weight:700;border:1px solid var(--border2);background:var(--card2);color:var(--muted);cursor:pointer;transition:all .2s;white-space:nowrap}
 .btn-new:hover{border-color:var(--accent);color:var(--accent)}
-.slbl{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
-.ctitle{font-family:'Raleway',sans-serif;font-size:1.45rem;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:26px}
-.prose{font-size:.94rem;line-height:1.85;color:#a8c4dc}
-.prose p{margin-bottom:13px}
+.slbl{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:5px}
+.ctitle{font-family:'Raleway',sans-serif;font-size:1.38rem;font-weight:800;letter-spacing:-.02em;line-height:1.25;margin-bottom:22px}
+.prose{font-size:.93rem;line-height:1.85;color:#a8c4dc}
+.prose p{margin-bottom:12px}
 .prose strong{color:var(--text);font-weight:600}
-.fbox{background:var(--card2);border:1px solid var(--border2);border-left:3px solid var(--accent);border-radius:10px;padding:16px 20px;margin:18px 0;font-family:'JetBrains Mono',monospace;font-size:.83rem;line-height:1.7;color:#7ee8e0}
-.fbox .fl{font-family:'Raleway',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-.hl{background:rgba(255,199,66,.13);color:var(--warn);padding:1px 7px;border-radius:5px;font-family:'JetBrains Mono',monospace;font-size:.88em}
-.sbox{background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:20px 22px;margin-bottom:22px}
-.step{display:flex;gap:12px;margin-bottom:12px;font-size:.88rem;align-items:flex-start}
+.fbox{background:var(--card2);border:1px solid var(--border2);border-left:3px solid var(--accent);border-radius:10px;padding:14px 18px;margin:16px 0;font-family:'JetBrains Mono',monospace;font-size:.81rem;line-height:1.7;color:#7ee8e0}
+.fbox .fl{font-family:'Raleway',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.hl{background:rgba(255,199,66,.13);color:var(--warn);padding:1px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:.87em}
+.sbox{background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:18px 20px;margin-bottom:20px}
+.step{display:flex;gap:11px;margin-bottom:11px;font-size:.87rem;align-items:flex-start}
 .step:last-child{margin-bottom:0}
-.sn{width:20px;height:20px;border-radius:50%;background:var(--accent);color:var(--bg);font-size:.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px}
-.sb{color:#8ab0cc;line-height:1.65}
-.sb code{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:.85em;background:rgba(22,217,200,.08);padding:1px 5px;border-radius:4px}
-.qt{font-size:1rem;font-weight:500;line-height:1.65;color:var(--text);margin-bottom:20px}
-.choices{display:flex;flex-direction:column;gap:9px;margin-bottom:20px}
-.ch{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;cursor:pointer;font-size:.91rem;color:var(--text);text-align:left;transition:border-color .15s,background .15s;width:100%}
+.sn{width:20px;height:20px;border-radius:50%;background:var(--accent);color:var(--bg);font-size:.63rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px}
+.sb2{color:#8ab0cc;line-height:1.65}
+.sb2 code{font-family:'JetBrains Mono',monospace;color:var(--accent);font-size:.84em;background:rgba(22,217,200,.08);padding:1px 5px;border-radius:4px}
+.qt{font-size:.98rem;font-weight:500;line-height:1.65;color:var(--text);margin-bottom:18px}
+.choices{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.ch{display:flex;align-items:flex-start;gap:11px;padding:12px 15px;background:var(--card2);border:1px solid var(--border2);border-radius:10px;cursor:pointer;font-size:.9rem;color:var(--text);text-align:left;transition:border-color .15s,background .15s;width:100%}
 .ch:hover:not(:disabled){border-color:var(--accent);background:var(--accent-d)}
 .ch:disabled{cursor:default}
-.cl{width:24px;height:24px;border-radius:50%;background:var(--dim);color:var(--muted);font-size:.7rem;font-weight:800;font-family:'Raleway',sans-serif;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;transition:background .15s,color .15s}
+.cl{width:22px;height:22px;border-radius:50%;background:var(--dim);color:var(--muted);font-size:.68rem;font-weight:800;font-family:'Raleway',sans-serif;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;transition:background .15s,color .15s}
 .ch.right{border-color:var(--ok);background:var(--ok-d)}
 .ch.right .cl{background:var(--ok);color:var(--bg)}
 .ch.wrong{border-color:var(--err);background:var(--err-d)}
 .ch.wrong .cl{background:var(--err);color:var(--bg)}
-.exp{border-radius:10px;padding:14px 18px;margin-bottom:22px;font-size:.86rem;line-height:1.7;color:#8aacbf;display:none}
-.exp.show{display:block;animation:pop .25s ease}
+.exp{border-radius:10px;padding:13px 17px;margin-bottom:20px;font-size:.85rem;line-height:1.7;color:#8aacbf;display:none}
+.exp.show{display:block;animation:pop .22s ease}
 .exp.right{border-left:3px solid var(--ok);background:var(--ok-d)}
 .exp.wrong{border-left:3px solid var(--err);background:var(--err-d)}
-.elbl{font-family:'Raleway',sans-serif;font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.elbl{font-family:'Raleway',sans-serif;font-size:.63rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
 .exp.right .elbl{color:var(--ok)}
 .exp.wrong .elbl{color:var(--err)}
-.nav{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:22px;border-top:1px solid var(--border)}
-.ctr{font-size:.78rem;color:var(--muted);font-family:'Raleway',sans-serif;font-weight:600}
-.btn{padding:10px 26px;border-radius:9px;font-family:'Raleway',sans-serif;font-size:.83rem;font-weight:700;cursor:pointer;border:none;transition:all .18s;letter-spacing:.02em}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:26px;padding-top:20px;border-top:1px solid var(--border)}
+.ctr{font-size:.76rem;color:var(--muted);font-family:'Raleway',sans-serif;font-weight:600}
+.btn{padding:9px 24px;border-radius:9px;font-family:'Raleway',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;border:none;transition:all .18s}
 .bp{background:var(--accent);color:var(--bg)}
-.bp:hover{background:#30ece0}
+.bp:hover{background:#2ce8d8}
 .bp:disabled{background:var(--dim);color:var(--muted);cursor:not-allowed}
 .bs{background:transparent;border:1px solid var(--border2);color:var(--muted)}
 .bs:hover{border-color:var(--text);color:var(--text)}
 .bs:disabled{opacity:.35;cursor:not-allowed}
 .done-scr{text-align:center;padding:16px 0}
-.done-icon{font-size:3.5rem;margin-bottom:18px}
-.done-pct{font-family:'Raleway',sans-serif;font-size:2.4rem;font-weight:800;color:var(--accent);margin:18px 0 6px}
-@media(max-width:700px){aside{display:none}main{padding:20px 14px}.card{padding:26px 22px}}
+.done-icon{font-size:3.2rem;margin-bottom:16px}
+.done-pct{font-family:'Raleway',sans-serif;font-size:2.2rem;font-weight:800;color:var(--accent);margin:16px 0 5px}
+@media(max-width:700px){aside{display:none}main{padding:18px 12px}.card{padding:24px 20px}}
 </style>
 </head>
 <body>
@@ -89,521 +98,324 @@ main{flex:1;overflow-y:auto;padding:36px 28px;display:flex;justify-content:cente
 <header>
   <div>
     <div class="ht">ENCE 3326 — Environmental Engineering</div>
-    <div class="hs">E2 Interactive Lesson · 31 screens · randomized problems</div>
+    <div class="hs" id="hcount">E2 Interactive Lesson</div>
   </div>
   <span class="spill" id="score">Score: 0 / 0</span>
 </header>
 <div class="shell">
-  <aside><div class="sbl">Sections</div><div id="sb"></div></aside>
+  <aside><div class="sbl">Jump to any screen</div><div id="sb"></div></aside>
   <main><div id="stage"></div></main>
 </div>
 <script>
-// ═══════════════════════════════════════════════
-// UTILITIES
-// ═══════════════════════════════════════════════
-const SECS = ["Water Treatment","Oxygen Demand","Stream DO Sag","Nitrogenous BOD","Air Quality: SO₂","Plume Types","Box Model","Gaussian Dispersion"];
-
+const SECS=["Water Treatment","Oxygen Demand","Stream DO Sag","Nitrogenous BOD","Air Quality: SO2","Plume Types","Box Model","Gaussian Dispersion"];
 function pick(a){return a[Math.floor(Math.random()*a.length)]}
-
-function sh(a){
-  const b=[...a];
-  for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}
-  return b;
-}
-
-function sf(n,d=3){
-  if(!isFinite(n)||n===0)return'0';
-  return parseFloat(n.toPrecision(d)).toString();
-}
-
+function sh(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+function sf(n,d=3){if(!isFinite(n)||n===0)return'0';return parseFloat(n.toPrecision(d)).toString()}
 function makeC(correct,wrongs,fmt){
-  const cFmt=fmt(correct);
-  const seen=new Set([cFmt]);
-  const uw=[];
-  for(const w of wrongs){
-    if(!isFinite(w)||w<=0)continue;
-    const f=fmt(w);
-    if(!seen.has(f)){seen.add(f);uw.push(w)}
-    if(uw.length===3)break;
-  }
-  // fallback padding
-  let mul=1.7;
-  while(uw.length<3){
-    const f=fmt(correct*mul);
-    if(!seen.has(f)){seen.add(f);uw.push(correct*mul)}
-    mul*=1.6;
-  }
+  const cFmt=fmt(correct),seen=new Set([cFmt]),uw=[];
+  for(const w of wrongs){if(!isFinite(w)||w<=0)continue;const f=fmt(w);if(!seen.has(f)){seen.add(f);uw.push(w)}if(uw.length===3)break}
+  let mul=1.7;while(uw.length<3){const f=fmt(correct*mul);if(!seen.has(f)){seen.add(f);uw.push(correct*mul)}mul*=1.6}
   const all=sh([{v:correct,ok:true},...uw.map(v=>({v,ok:false}))]);
   return{cs:all.map(x=>fmt(x.v)),ok:all.findIndex(x=>x.ok)};
 }
 
-// ═══════════════════════════════════════════════
-// GENERATORS  — called each time a problem needs new numbers
-// ═══════════════════════════════════════════════
 const GENS={
-
   alkalinity(){
     const dose=pick([8,9,10,11,12,13,14,15,16,17,18]);
-    const MWa=594,MWh=61,rat=6;
-    const mol=dose/1000/MWa;
-    const correct=mol*rat*MWh*1000;
-    const w1=mol*3*MWh*1000;       // used ratio 3
-    const w2=mol*rat*50*1000;       // used MW of CaCO3=50 instead of 61
-    const w3=correct*2;
-    const {cs,ok}=makeC(correct,[w1,w2,w3],v=>sf(v,2)+' mg/L');
-    return{
-      steps:[
-        {n:1,t:`Convert dose: <code>${dose} mg/L ÷ 1000 = ${dose/1000} g/L</code>`},
-        {n:2,t:`Molar conc: <code>${dose/1000} ÷ 594 = ${sf(mol,3)} mol/L alum</code>`},
-        {n:3,t:`Apply 1:6 ratio: <code>6 × ${sf(mol,3)} = ${sf(mol*6,3)} mol/L HCO₃⁻</code>`},
-        {n:4,t:`Convert to mg/L: <code>${sf(mol*6,3)} × 61 × 1000 = ?</code>`}
-      ],
-      q:`Alum dose = ${dose} mg/L, MW alum = 594 g/mol, MW of HCO₃⁻ = 61 g/mol, mole ratio 1:6. What is the alkalinity consumed in mg/L as HCO₃⁻?`,
-      cs,ok,
-      exp:`${dose} mg/L → ${sf(mol,3)} mol/L alum × 6 × 61 × 1000 = <strong>${sf(correct,2)} mg/L</strong> as HCO₃⁻. To express as CaCO₃ multiply by 50/61: ${sf(correct*50/61,2)} mg/L as CaCO₃.`
-    };
+    const mol=dose/1000/594,correct=mol*6*61*1000;
+    const {cs,ok}=makeC(correct,[mol*3*61*1000,mol*6*50*1000,correct*2],v=>sf(v,2)+' mg/L');
+    return{steps:[
+      {n:1,t:`Convert: <code>${dose} mg/L &divide; 1000 = ${dose/1000} g/L</code>`},
+      {n:2,t:`Molar: <code>${dose/1000} &divide; 594 = ${sf(mol,3)} mol/L alum</code>`},
+      {n:3,t:`1:6 ratio: <code>6 &times; ${sf(mol,3)} = ${sf(mol*6,3)} mol/L HCO3-</code>`},
+      {n:4,t:`To mg/L: <code>${sf(mol*6,3)} &times; 61 &times; 1000 = ?</code>`}
+    ],q:`Alum dose = ${dose} mg/L, MW alum = 594 g/mol, MW HCO3- = 61 g/mol, mole ratio 1:6. What is the alkalinity consumed in mg/L as HCO3-?`,cs,ok,
+    exp:`${dose} mg/L &rarr; ${sf(mol,3)} mol/L alum &times; 6 &times; 61 &times; 1000 = <strong>${sf(correct,2)} mg/L</strong>. To express as CaCO3, multiply by 50/61 &rarr; ${sf(correct*50/61,2)} mg/L.`};
   },
-
   thod(){
-    const conc=pick([50,55,60,65,70,75,80,85,90,95,100,110,120]);
-    const correct=conc*96/46;
-    const w1=conc*32/46;   // used 1 mol O2 instead of 3
-    const w2=conc*96/48;   // wrong ethanol MW
-    const w3=conc;          // forgot mass ratio entirely
-    const {cs,ok}=makeC(correct,[w1,w2,w3],v=>sf(v,4)+' mg/L');
-    return{
-      steps:[
-        {n:1,t:`Balanced combustion: <code>C₂H₆O + 3 O₂ → 2 CO₂ + 3 H₂O</code>`},
-        {n:2,t:`Mass of 3 mol O₂: <code>3 × 32 = 96 g/mol</code>`},
-        {n:3,t:`MW ethanol = <code>46 g/mol</code>`},
-        {n:4,t:`Mass ratio = <code>96/46 = 2.087 g O₂ per g ethanol</code>`},
-        {n:5,t:`ThOD = <code>${conc} × 2.087 = ?</code>`}
-      ],
-      q:`Compute the ThOD of ${conc} mg/L of ethanol (C₂H₆O, MW = 46 g/mol). The balanced reaction is C₂H₆O + 3 O₂ → 2 CO₂ + 3 H₂O.`,
-      cs,ok,
-      exp:`${conc} × (96/46) = ${conc} × 2.087 = <strong>${sf(correct,4)} mg/L</strong>. The 96 g/mol comes from 3 moles O₂ × 32 g/mol = 96 g of O₂ per mole of ethanol.`
-    };
+    const conc=pick([50,60,65,70,75,80,90,100,110,120]),correct=conc*96/46;
+    const {cs,ok}=makeC(correct,[conc*32/46,conc*96/48,conc],v=>sf(v,4)+' mg/L');
+    return{steps:[
+      {n:1,t:`Balanced: <code>C2H6O + 3 O2 &rarr; 2 CO2 + 3 H2O</code>`},
+      {n:2,t:`3 mol O2 = <code>3 &times; 32 = 96 g/mol</code>  |  MW ethanol = <code>46 g/mol</code>`},
+      {n:3,t:`Mass ratio = <code>96/46 = 2.087 g O2 / g ethanol</code>`},
+      {n:4,t:`ThOD = <code>${conc} &times; 2.087 = ?</code>`}
+    ],q:`Compute the ThOD of ${conc} mg/L of ethanol (C2H6O, MW = 46 g/mol). Balanced reaction: C2H6O + 3 O2 &rarr; 2 CO2 + 3 H2O.`,cs,ok,
+    exp:`${conc} &times; (96/46) = <strong>${sf(correct,4)} mg/L</strong>. The mole ratio (3 mol O2 per mol ethanol) comes from the balanced combustion equation.`};
   },
-
   tempCorr(){
     const k20=pick([0.12,0.14,0.16,0.18,0.20,0.22,0.24,0.26]);
-    const T=pick([10,12,13,14,15,16,17,18]);
-    const theta=1.135,exp=T-20;
-    const factor=Math.pow(theta,exp);
-    const correct=k20*factor;
-    const w1=k20*Math.pow(theta,20-T);       // wrong exponent sign
-    const w2=k20*(1+0.135*exp);              // linear approximation
-    const w3=k20;                              // no correction
-    const {cs,ok}=makeC(correct,[w1,w2,w3],v=>v.toFixed(4)+' day⁻¹');
-    return{
-      steps:[
-        {n:1,t:`Formula: <code>k_T = k₂₀ × θ^(T−20)</code>  where θ = 1.135`},
-        {n:2,t:`Exponent: <code>${T} − 20 = ${exp}</code>`},
-        {n:3,t:`θ^(${exp}) = <code>1.135^(${exp}) ≈ ${sf(factor,3)}</code>`},
-        {n:4,t:`k₍${T}₎ = <code>${k20} × ${sf(factor,3)} = ?</code>`}
-      ],
-      q:`k₂₀ = ${k20} day⁻¹, θ = 1.135. What is the temperature-corrected rate constant at ${T}°C?`,
-      cs,ok,
-      exp:`${k20} × 1.135^(${T}−20) = ${k20} × ${sf(factor,3)} = <strong>${correct.toFixed(4)} day⁻¹</strong>. The negative exponent (${exp}) makes the factor < 1, so k always decreases at temperatures below 20°C.`
-    };
+    const T=pick([10,12,13,14,15,16,17,18]),exp=T-20,factor=Math.pow(1.135,exp),correct=k20*factor;
+    const {cs,ok}=makeC(correct,[k20*Math.pow(1.135,20-T),k20*(1+0.135*exp),k20],v=>v.toFixed(4)+' day-1');
+    return{steps:[
+      {n:1,t:`Formula: <code>k_T = k20 &times; &theta;^(T-20)</code>, &theta; = 1.135`},
+      {n:2,t:`Exponent: <code>${T} - 20 = ${exp}</code>`},
+      {n:3,t:`1.135^(${exp}) &asymp; <code>${sf(factor,3)}</code>`},
+      {n:4,t:`k(${T}) = <code>${k20} &times; ${sf(factor,3)} = ?</code>`}
+    ],q:`k20 = ${k20} day-1, &theta; = 1.135. What is the temperature-corrected rate constant at ${T}&deg;C?`,cs,ok,
+    exp:`${k20} &times; 1.135^(${exp}) = ${k20} &times; ${sf(factor,3)} = <strong>${correct.toFixed(4)} day-1</strong>. Negative exponent (${exp}) means k always decreases below 20&deg;C.`};
   },
-
   doMix(){
     const Qw=pick([0.15,0.18,0.20,0.22,0.25,0.28,0.30,0.35]);
     const DOw=pick([1.0,1.5,2.0,2.5,3.0,3.5,4.0]);
     const Qr=pick([0.45,0.50,0.55,0.60,0.65,0.70,0.75,0.80]);
     const DOr=pick([6.0,6.5,7.0,7.5,8.0,8.5,9.0]);
-    const num=Qw*DOw+Qr*DOr,denom=Qw+Qr;
-    const correct=num/denom;
-    const w1=(DOw+DOr)/2;                  // simple average (forgot flow weighting)
-    const w2=(Qw*DOr+Qr*DOw)/denom;       // swapped DO values
-    const w3=num/(Qw*Qr);                  // multiplied flows instead of adding
-    const {cs,ok}=makeC(correct,[w1,w2,w3],v=>v.toFixed(2)+' mg/L');
-    return{
-      steps:[
-        {n:1,t:`Numerator: <code>(${Qw}×${DOw}) + (${Qr}×${DOr}) = ${sf(Qw*DOw,3)} + ${sf(Qr*DOr,4)} = ${sf(num,4)}</code>`},
-        {n:2,t:`Denominator: <code>${Qw} + ${Qr} = ${sf(denom,3)} m³/s</code>`},
-        {n:3,t:`DO_mix = <code>${sf(num,4)} / ${sf(denom,3)} = ?</code>`}
-      ],
-      q:`Wastewater: Q_w = ${Qw} m³/s, DO_w = ${DOw} mg/L. River: Q_r = ${Qr} m³/s, DO_r = ${DOr} mg/L. What is the flow-weighted DO after mixing?`,
-      cs,ok,
-      exp:`(${Qw}×${DOw} + ${Qr}×${DOr}) / (${Qw}+${Qr}) = ${sf(num,4)} / ${sf(denom,3)} = <strong>${correct.toFixed(2)} mg/L</strong>. Never use a simple average — flows weight the result toward the larger stream.`
-    };
+    const num=Qw*DOw+Qr*DOr,denom=Qw+Qr,correct=num/denom;
+    const {cs,ok}=makeC(correct,[(DOw+DOr)/2,(Qw*DOr+Qr*DOw)/denom,num/(Qw*Qr)],v=>v.toFixed(2)+' mg/L');
+    return{steps:[
+      {n:1,t:`Numerator: <code>(${Qw}&times;${DOw}) + (${Qr}&times;${DOr}) = ${sf(num,4)}</code>`},
+      {n:2,t:`Denominator: <code>${Qw} + ${Qr} = ${sf(denom,3)} m3/s</code>`},
+      {n:3,t:`DO_mix = <code>${sf(num,4)} / ${sf(denom,3)} = ?</code>`}
+    ],q:`Wastewater: Qw = ${Qw} m3/s, DOw = ${DOw} mg/L. River: Qr = ${Qr} m3/s, DOr = ${DOr} mg/L. Flow-weighted DO after mixing?`,cs,ok,
+    exp:`(${Qw}&times;${DOw} + ${Qr}&times;${DOr}) / (${Qw}+${Qr}) = <strong>${correct.toFixed(2)} mg/L</strong>. Never use a simple average.`};
   },
-
   ultimateBOD(){
     const BOD5=pick([15,18,20,22,24,26,28,30,32,35]);
     const k=pick([0.07,0.08,0.09,0.10,0.11,0.12,0.13]);
-    const ekt=Math.exp(-5*k);
-    const correct=BOD5/(1-ekt);
-    const w1=BOD5*Math.exp(5*k);           // inverted exponent
-    const w2=BOD5/(1-Math.exp(-k));        // used t=1 day instead of 5
-    const w3=BOD5*(1+5*k);                 // linear approximation
-    const {cs,ok}=makeC(correct,[w1,w2,w3],v=>v.toFixed(1)+' mg/L');
-    return{
-      steps:[
-        {n:1,t:`Formula: <code>L₀ = BOD₅ / (1 − e^(−5k))</code>`},
-        {n:2,t:`Exponent: <code>−5 × ${k} = ${sf(-5*k,3)}</code>`},
-        {n:3,t:`e^(${sf(-5*k,3)}) ≈ <code>${sf(ekt,3)}</code>  →  denominator: <code>1 − ${sf(ekt,3)} = ${sf(1-ekt,3)}</code>`},
-        {n:4,t:`L₀ = <code>${BOD5} / ${sf(1-ekt,3)} = ?</code>`}
-      ],
-      q:`BOD₅ = ${BOD5} mg/L, k = ${k} day⁻¹ (already temperature-corrected). What is the ultimate BOD, L₀?`,
-      cs,ok,
-      exp:`${BOD5} / (1 − e^(−${5*k})) = ${BOD5} / ${sf(1-ekt,3)} = <strong>${correct.toFixed(1)} mg/L</strong>. This is the total oxygen demand assuming infinite time for bacterial oxidation.`
-    };
+    const ekt=Math.exp(-5*k),correct=BOD5/(1-ekt);
+    const {cs,ok}=makeC(correct,[BOD5*Math.exp(5*k),BOD5/(1-Math.exp(-k)),BOD5*(1+5*k)],v=>v.toFixed(1)+' mg/L');
+    return{steps:[
+      {n:1,t:`Formula: <code>L0 = BOD5 / (1 - e^(-5k))</code>`},
+      {n:2,t:`e^(-5&times;${k}) &asymp; <code>${sf(ekt,3)}</code>`},
+      {n:3,t:`Denom: <code>1 - ${sf(ekt,3)} = ${sf(1-ekt,3)}</code>`},
+      {n:4,t:`L0 = <code>${BOD5} / ${sf(1-ekt,3)} = ?</code>`}
+    ],q:`BOD5 = ${BOD5} mg/L, k = ${k} day-1 (temperature-corrected). What is the ultimate BOD, L0?`,cs,ok,
+    exp:`${BOD5} / (1 - e^(-${5*k})) = <strong>${correct.toFixed(1)} mg/L</strong>. L0 always exceeds BOD5.`};
   },
-
+  bodRemaining(){
+    const La=pick([8,10,12,14,16,18,20,22,25]);
+    const kd=pick([0.15,0.18,0.20,0.22,0.25]);
+    const v=pick([0.20,0.25,0.30,0.35,0.40]);
+    const x_km=pick([10,15,20,25,30,35,40]);
+    const t=x_km*1000/v/86400,eterm=Math.exp(-kd*t),correct=La*eterm;
+    const w1=La*Math.exp(-kd*x_km),w2=La*(1-eterm),w3=La/eterm;
+    const {cs,ok}=makeC(correct,[w1,w2,w3],v2=>v2.toFixed(2)+' mg/L');
+    return{steps:[
+      {n:1,t:`BOD remaining: <code>L_x = La &times; e^(-kd &times; t)</code>`},
+      {n:2,t:`Convert distance to time: <code>t = (${x_km}&times;1000) / (${v} m/s &times; 86400 s/day) = ${sf(t,3)} days</code>`},
+      {n:3,t:`e^(-${kd}&times;${sf(t,3)}) &asymp; <code>${sf(eterm,3)}</code>`},
+      {n:4,t:`L_x = <code>${La} &times; ${sf(eterm,3)} = ?</code>`}
+    ],q:`La = ${La} mg/L, kd = ${kd} day-1, stream velocity = ${v} m/s. How much BOD remains ${x_km} km downstream?`,cs,ok,
+    exp:`t = ${x_km}km / (${v} m/s &times; 86.4 s&middot;km/m/day) = ${sf(t,3)} days. L_x = ${La} &times; e^(${sf(-kd*t,3)}) = <strong>${correct.toFixed(2)} mg/L</strong>. Always convert distance to time &mdash; plugging km in as days is the most common error.`};
+  },
+  criticalTime(){
+    let La,kd,kr,Da,tc,logArg;
+    let tries=0;
+    do{
+      La=pick([8,10,12,14,16,18,20,22]);
+      kd=pick([0.15,0.18,0.20,0.22,0.25]);
+      kr=kd+pick([0.12,0.15,0.18,0.20,0.22,0.25]);
+      const DOmix=pick([5.0,5.5,6.0,6.5,7.0,7.5]);
+      Da=parseFloat(sf(9.1-DOmix,3));
+      logArg=(kr/kd)*(1-Da*(kr-kd)/(kd*La));
+      if(logArg>0.05&&logArg<50){const t=(1/(kr-kd))*Math.log(logArg);if(t>0.5&&t<15){tc=t;break}}
+      tries++;
+    }while(tries<150);
+    if(!tc){tc=2.77;kd=0.20;kr=0.41;La=10.9;Da=1.33;logArg=(0.41/0.20)*(1-1.33*0.21/(0.20*10.9));}
+    const correct=tc,DOmix=9.1-Da;
+    const w1=(1/(kr+kd))*Math.log(kr/kd);
+    const {cs,ok}=makeC(correct,[w1,correct*1.55,Math.abs(correct*0.52)],v=>v.toFixed(2)+' days');
+    return{steps:[
+      {n:1,t:`Formula: <code>tc = [1/(kr-kd)] &times; ln[(kr/kd)(1 - Da(kr-kd)/(kd&times;La))]</code>`},
+      {n:2,t:`Da = 9.1 - ${DOmix} = <code>${sf(Da,3)} mg/L</code>`},
+      {n:3,t:`Log argument: <code>(${sf(kr,3)}/${sf(kd,3)}) &times; (1 - ${sf(Da,3)}&times;${sf(kr-kd,3)}/(${sf(kd,3)}&times;${La})) = ${sf(logArg,4)}</code>`},
+      {n:4,t:`tc = <code>[1/${sf(kr-kd,3)}] &times; ln(${sf(logArg,4)}) = ${sf(1/(kr-kd),3)} &times; ${sf(Math.log(logArg),3)} = ?</code>`}
+    ],q:`La = ${La} mg/L, kd = ${sf(kd,3)} day-1, kr = ${sf(kr,3)} day-1, DOmix = ${DOmix} mg/L, DOsat = 9.1 mg/L. Calculate the critical time tc.`,cs,ok,
+    exp:`tc = [1/${sf(kr-kd,3)}] &times; ln(${sf(logArg,4)}) = <strong>${correct.toFixed(2)} days</strong>. Always verify the log argument is positive before computing &mdash; a negative argument signals an input error.`};
+  },
+  criticalLocation(){
+    const tc=pick([1.5,2.0,2.5,2.77,3.0,3.5,4.0,4.5]);
+    const v=pick([0.20,0.25,0.30,0.35,0.40,0.45]);
+    const vkmd=v*86400/1000,correct=vkmd*tc;
+    const {cs,ok}=makeC(correct,[v*tc,correct*1000,v*tc*24],v2=>v2.toFixed(1)+' km');
+    return{steps:[
+      {n:1,t:`Formula: <code>x_c = v &times; t_c</code> (consistent units)`},
+      {n:2,t:`Convert velocity: <code>${v} m/s &times; 86400 s/day &divide; 1000 m/km = ${sf(vkmd,3)} km/day</code>`},
+      {n:3,t:`x_c = <code>${sf(vkmd,3)} km/day &times; ${tc} days = ?</code>`}
+    ],q:`Critical time tc = ${tc} days, stream velocity = ${v} m/s. How far downstream (km) is the DO minimum?`,cs,ok,
+    exp:`${v} m/s &times; 86,400 s/day &divide; 1000 = ${sf(vkmd,3)} km/day. x_c = <strong>${correct.toFixed(1)} km</strong>. Forgetting the m&rarr;km conversion is the most common error.`};
+  },
+  maxDeficit(){
+    let La,kd,kr,Da,tc,Dc,DOsat=9.1;
+    let tries=0;
+    do{
+      La=pick([8,10,12,14,16,18,20]);
+      kd=pick([0.15,0.18,0.20,0.22]);
+      kr=kd+pick([0.15,0.18,0.20,0.22,0.25]);
+      const DOmix=pick([5.5,6.0,6.5,7.0]);
+      Da=parseFloat(sf(DOsat-DOmix,3));
+      const logArg=(kr/kd)*(1-Da*(kr-kd)/(kd*La));
+      if(logArg>0.05){
+        const t=(1/(kr-kd))*Math.log(logArg);
+        if(t>0.3&&t<15){
+          tc=t;
+          Dc=(kd*La/(kr-kd))*(Math.exp(-kd*tc)-Math.exp(-kr*tc))+Da*Math.exp(-kr*tc);
+          if(Dc>0&&Dc<DOsat)break;
+        }
+      }
+      tries++;
+    }while(tries<200);
+    if(!Dc||Dc<=0){Dc=3.06;tc=2.77;kd=0.20;kr=0.41;La=10.9;Da=1.33;}
+    const minDO=DOsat-Dc,correct=minDO>0?minDO:0.1;
+    const DOmix=DOsat-Da;
+    const w1=DOsat-Dc*1.5,w2=Dc,w3=correct*0.65;
+    const {cs,ok}=makeC(correct,[w1,w2,w3].filter(v=>v>0&&v<DOsat),v2=>v2.toFixed(2)+' mg/L');
+    return{steps:[
+      {n:1,t:`D_c = <code>(kd&times;La/(kr-kd))(e^(-kd&times;tc) - e^(-kr&times;tc)) + Da&times;e^(-kr&times;tc)</code>`},
+      {n:2,t:`kd=${sf(kd,3)}, kr=${sf(kr,3)}, La=${La}, Da=${sf(Da,3)}, tc=${sf(tc,3)} days`},
+      {n:3,t:`D_c = <code>${sf(kd*La/(kr-kd),3)} &times; (${sf(Math.exp(-kd*tc),3)} - ${sf(Math.exp(-kr*tc),3)}) + ${sf(Da*Math.exp(-kr*tc),3)} = ${sf(Dc,3)} mg/L</code>`},
+      {n:4,t:`Min DO = 9.1 - D_c = <code>9.1 - ${sf(Dc,3)} = ?</code>`}
+    ],q:`kd = ${sf(kd,3)} day-1, kr = ${sf(kr,3)} day-1, La = ${La} mg/L, Da = ${sf(Da,3)} mg/L, tc = ${sf(tc,3)} days. DOsat = 9.1 mg/L. What is the minimum DO?`,cs,ok,
+    exp:`D_c = ${sf(Dc,3)} mg/L. Min DO = 9.1 - ${sf(Dc,3)} = <strong>${correct.toFixed(2)} mg/L</strong>. D_c is the maximum <em>deficit</em> &mdash; subtract from saturation to get actual DO. Reporting D_c itself is the most common mistake.`};
+  },
   nbod(){
-    const conc=pick([20,25,30,35,40,45,50,55,60,65,70]);
-    const correct=conc*4.57;
-    const w1=conc;                    // forgot to apply ratio
-    const w2=conc*3.76;              // converted NH3 to NH3-N first (wrong)
-    const w3=conc*2.86;              // confused with CBOD conversion factor
-    const {cs,ok}=makeC(correct,[w1,w2,w3],v=>v.toFixed(1)+' mg/L');
-    return{
-      steps:[
-        {n:1,t:`'As nitrogen' means the ${conc} mg/L is <code>already the mass of N</code> — no MW conversion needed`},
-        {n:2,t:`Apply ratio directly: <code>${conc} mg/L N × 4.57 g O₂/g N = ?</code>`}
-      ],
-      q:`Compute the NBOD of a wastewater with ${conc} mg/L ammonia reported as nitrogen (NH₃-N). The oxygen requirement for nitrification is 4.57 g O₂ per g N.`,
-      cs,ok,
-      exp:`${conc} × 4.57 = <strong>${correct.toFixed(1)} mg/L</strong>. The 'as nitrogen' notation is key — it means the 4.57 ratio applies directly to the given concentration. No molecular weight conversion required.`
-    };
+    const conc=pick([20,25,30,35,40,45,50,55,60,65,70]),correct=conc*4.57;
+    const {cs,ok}=makeC(correct,[conc,conc*3.76,conc*2.86],v=>v.toFixed(1)+' mg/L');
+    return{steps:[
+      {n:1,t:`"As nitrogen" means ${conc} mg/L is <code>already the mass of N</code> &mdash; no MW conversion`},
+      {n:2,t:`NBOD = <code>${conc} &times; 4.57 = ?</code>`}
+    ],q:`Compute the NBOD of a wastewater with ${conc} mg/L ammonia as nitrogen (NH3-N). Oxygen requirement = 4.57 g O2 per g N.`,cs,ok,
+    exp:`${conc} &times; 4.57 = <strong>${correct.toFixed(1)} mg/L</strong>. "As nitrogen" means apply 4.57 directly &mdash; no molecular weight step.`};
   },
-
   ppmConv(){
     const ppm=pick([0.05,0.06,0.07,0.08,0.09,0.10,0.12,0.15,0.18,0.20]);
-    const T=pick([15,18,20,22,25,28,30]);
-    const MW=64,R=8.314,P=101325,TK=T+273;
+    const T=pick([15,18,20,22,25,28,30]),TK=T+273,R=8.314,P=101325,MW=64;
     const correct=ppm*1e-6*MW*P/(R*TK)*1000;
-    const w1=ppm*1e-6*MW*P/(R*298)*1000;  // assumed T=25°C regardless
-    const w2=correct*1.6;
-    const w3=correct*0.55;
-    const {cs,ok}=makeC(correct,[w1,w2,w3],v=>v.toFixed(3)+' mg/m³');
-    return{
-      steps:[
-        {n:1,t:`T = ${T} + 273 = <code>${TK} K</code>   |   P = <code>101,325 Pa</code>`},
-        {n:2,t:`Formula: <code>C = ppm × 10⁻⁶ × MW × P / (R × T_K) × 1000</code>`},
-        {n:3,t:`Numerator part: <code>${ppm}×10⁻⁶ × ${MW} × 101325 = ${sf(ppm*1e-6*MW*P,4)}</code>`},
-        {n:4,t:`Denominator: <code>8.314 × ${TK} = ${sf(R*TK,4)}</code>`},
-        {n:5,t:`C = <code>${sf(ppm*1e-6*MW*P,4)} / ${sf(R*TK,4)} × 1000 = ?</code>`}
-      ],
-      q:`Air at ${T}°C and 1 atm contains ${ppm} ppm SO₂. MW of SO₂ = 64 g/mol. Convert to mg/m³.`,
-      cs,ok,
-      exp:`${ppm}×10⁻⁶ × 64 × 101325 / (8.314 × ${TK}) × 1000 = <strong>${correct.toFixed(3)} mg/m³</strong>. Always convert °C to Kelvin — using Celsius instead throws the answer off by ~10×.`
-    };
+    const {cs,ok}=makeC(correct,[ppm*1e-6*MW*P/(R*298)*1000,correct*1.6,correct*0.55],v=>v.toFixed(3)+' mg/m3');
+    return{steps:[
+      {n:1,t:`T = ${T}+273 = <code>${TK} K</code>  |  P = <code>101,325 Pa</code>`},
+      {n:2,t:`C = <code>ppm &times; 10^-6 &times; MW &times; P / (R &times; T_K) &times; 1000</code>`},
+      {n:3,t:`Numerator: <code>${ppm}&times;10^-6 &times; 64 &times; 101325 = ${sf(ppm*1e-6*MW*P,4)}</code>`},
+      {n:4,t:`Denom: <code>8.314 &times; ${TK} = ${sf(R*TK,4)}</code>`},
+      {n:5,t:`C = <code>${sf(ppm*1e-6*MW*P,4)} / ${sf(R*TK,4)} &times; 1000 = ?</code>`}
+    ],q:`Air at ${T}&deg;C and 1 atm contains ${ppm} ppm SO2. MW = 64 g/mol. Convert to mg/m3.`,cs,ok,
+    exp:`= <strong>${correct.toFixed(3)} mg/m3</strong>. Always convert &deg;C to Kelvin first.`};
   },
-
   boxModel(){
     const E=pick([10,12,15,18,20,22,25,28,30]);
     const u=pick([2,3,4,5,6]);
     const H=pick([800,1000,1200,1400,1600,1800,2000]);
-    const Wf=pick([0.5,0.75,1.0,1.25,1.5]);
-    const W=Wf*1e5;
-    const correct=E*1e6/(u*H*W);
-    const w1=correct*10;
-    const w2=correct*0.1;
-    const w3=E*1e6/(u*W);     // forgot H
-    const {cs,ok}=makeC(correct,[w1,w2,w3],v=>sf(v,3)+' mg/m³');
-    const denom=u*H*W;
-    return{
-      steps:[
-        {n:1,t:`Formula: <code>C_e = E / (u × H × W)</code>`},
-        {n:2,t:`Denominator: <code>${u} × ${H} × ${W.toExponential(1)} = ${sf(denom,3).replace(/e\+?(-?\d+)/,'×10^$1')} m³/s</code>`},
-        {n:3,t:`C_e = <code>${E} kg/s ÷ ${sf(denom,3)} m³/s = ${sf(E/denom,3)} kg/m³</code>`},
-        {n:4,t:`Convert kg/m³ → mg/m³: <code>${sf(E/denom,3)} × 10⁶ = ?</code>`}
-      ],
-      q:`City: W = ${Wf}×10⁵ m, H = ${H} m, wind speed u = ${u} m/s (clean air entering), SO₂ emission rate E = ${E} kg/s. Calculate the steady-state concentration in mg/m³.`,
-      cs,ok,
-      exp:`${E} kg/s ÷ (${u}×${H}×${W.toExponential(1)}) = ${sf(E/denom,3)} kg/m³ × 10⁶ = <strong>${sf(correct,3)} mg/m³</strong>.`
-    };
+    const Wf=pick([0.5,0.75,1.0,1.25,1.5]),W=Wf*1e5,denom=u*H*W;
+    const correct=E*1e6/denom;
+    const {cs,ok}=makeC(correct,[correct*10,correct*0.1,E*1e6/(u*W)],v=>sf(v,3)+' mg/m3');
+    return{steps:[
+      {n:1,t:`Formula: <code>C_e = E / (u &times; H &times; W)</code>`},
+      {n:2,t:`Denom: <code>${u}&times;${H}&times;${W.toExponential(1)} = ${sf(denom,3)} m3/s</code>`},
+      {n:3,t:`C_e = <code>${E} kg/s &divide; ${sf(denom,3)} = ${sf(E/denom,4)} kg/m3</code>`},
+      {n:4,t:`Convert: <code>${sf(E/denom,4)} &times; 10^6 = ?</code>`}
+    ],q:`W = ${Wf}&times;10^5 m, H = ${H} m, u = ${u} m/s, E = ${E} kg/s. Steady-state concentration in mg/m3?`,cs,ok,
+    exp:`${E} / (${u}&times;${H}&times;${W.toExponential(1)}) &times; 10^6 = <strong>${sf(correct,3)} mg/m3</strong>.`};
   },
-
   gaussian(){
     const Q=pick([500,750,1000,1250,1500,1750,2000]);
     const u=pick([3,4,5,6]);
     const sy=pick([300,350,400,420,450,500,550]);
     const sz=pick([100,120,130,150,175,200]);
     const H=pick([80,90,100,110,120,130,145,160]);
-    const earg=-(H*H)/(2*sz*sz);
-    const eterm=Math.exp(earg);
-    const denom=Math.PI*u*sy*sz;
+    const earg=-(H*H)/(2*sz*sz),eterm=Math.exp(earg),denom=Math.PI*u*sy*sz;
     const correct=Q/denom*eterm*1000;
-    const w1=Q/(2*Math.PI*u*sy*sz)*eterm*1000;     // used 2π (z=0 simplification missed)
-    const w2=Q/denom*1000;                          // forgot the exponential
-    const w3=Q/denom*Math.exp(-(H*H)/(sz*sz))*1000; // forgot ÷2 in exponent
-    const {cs,ok}=makeC(correct,[w1,w2,w3],v=>sf(v,3)+' mg/m³');
-    return{
-      steps:[
-        {n:1,t:`At y=0, z=0: <code>C = Q / (π u σ_y σ_z) × exp(−H² / (2σ_z²))</code>`},
-        {n:2,t:`Denominator: <code>π × ${u} × ${sy} × ${sz} = ${sf(denom,5)}</code>`},
-        {n:3,t:`Exponent: <code>−${H}² / (2×${sz}²) = −${H*H} / ${2*sz*sz} = ${sf(earg,3)}</code>`},
-        {n:4,t:`e^(${sf(earg,3)}) ≈ <code>${sf(eterm,3)}</code>`},
-        {n:5,t:`C = <code>(${Q} / ${sf(denom,5)}) × ${sf(eterm,3)} × 1000 = ?</code>`}
-      ],
-      q:`Q = ${Q} g/s, u = ${u} m/s, H = ${H} m, σ_y = ${sy} m, σ_z = ${sz} m. Compute the ground-level centerline concentration (y = 0, z = 0).`,
-      cs,ok,
-      exp:`(${Q} / (π×${u}×${sy}×${sz})) × e^(${sf(earg,3)}) × 1000 = <strong>${sf(correct,3)} mg/m³</strong>. At z=0 the two vertical terms combine to cancel the 2π denominator down to π — if you used 2π instead, you'd get half the correct answer.`
-    };
+    const {cs,ok}=makeC(correct,[Q/(2*Math.PI*u*sy*sz)*eterm*1000,Q/denom*1000,Q/denom*Math.exp(-(H*H)/(sz*sz))*1000],v=>sf(v,3)+' mg/m3');
+    return{steps:[
+      {n:1,t:`y=0,z=0: <code>C = Q / (&pi; u &sigma;_y &sigma;_z) &times; exp(-H^2/(2&sigma;_z^2))</code>`},
+      {n:2,t:`Denom: <code>&pi;&times;${u}&times;${sy}&times;${sz} = ${sf(denom,5)}</code>`},
+      {n:3,t:`Exponent: <code>-${H}^2/(2&times;${sz}^2) = ${sf(earg,3)}</code>  &rarr;  <code>${sf(eterm,3)}</code>`},
+      {n:4,t:`C = <code>(${Q}/${sf(denom,5)}) &times; ${sf(eterm,3)} &times; 1000 = ?</code>`}
+    ],q:`Q = ${Q} g/s, u = ${u} m/s, H = ${H} m, &sigma;y = ${sy} m, &sigma;z = ${sz} m. Ground-level centerline concentration?`,cs,ok,
+    exp:`= <strong>${sf(correct,3)} mg/m3</strong>. Using 2&pi; instead of &pi; gives half the answer &mdash; the z=0 reflection doubles concentration at ground level.`};
   }
 };
 
-// ═══════════════════════════════════════════════
-// LESSON DATA  (lesson nodes have body; quiz/math have cs/ok/exp)
-// ═══════════════════════════════════════════════
 const L=[
-// ── SECTION 0 ──────────────────────────────────
-{s:0,t:'lesson',title:'Why Raw Water Needs Treatment',body:`
-<p>Raw water from lakes and rivers contains tiny suspended particles called <strong>colloids</strong>. These are so small (0.001–1 μm) that they never settle on their own, regardless of how long you wait.</p>
-<p>The reason: every colloid carries a <strong>negative surface charge</strong>. Like poles of a magnet, identical charges repel each other — particles can never get close enough to stick together and form floc heavy enough to sink.</p>
-<p><strong>Coagulation</strong> fixes this. Adding a coagulant neutralizes the surface charge. With repulsion removed, particles collide, clump into floc, and settle out. Turbidity is measured in <strong>NTU (Nephelometric Turbidity Units)</strong> — lower is better.</p>`},
-
-{s:0,t:'quiz',title:'Particle Stability',
-q:'What prevents colloidal particles in raw water from naturally settling over time?',
-cs:['They are too dense and create turbulent currents that keep them suspended','They carry the same negative surface charge and electrostatically repel each other','They are dissolved in water, not suspended','Water surface tension holds them in place'],
-ok:1,
-exp:'Colloids carry a negative surface charge. Electrostatic repulsion actively prevents them from getting close enough to collide and aggregate. Coagulation neutralizes this charge so particles can finally clump and settle.'},
-
-{s:0,t:'lesson',title:'Alum Chemistry and the Jar Test',body:`
-<p><strong>Alum</strong> (Al₂(SO₄)₃·14H₂O, MW = 594 g/mol) is the most common coagulant. It reacts with bicarbonate alkalinity (HCO₃⁻) to form aluminum hydroxide floc that captures turbidity particles.</p>
-<p>Critical stoichiometry: <span class="hl">1 mole of alum consumes 6 moles of HCO₃⁻</span>. You'll use this to calculate how much alkalinity a water plant consumes.</p>
-<p>A <strong>jar test</strong> finds optimal conditions before scaling up:</p>
-<div class="fbox"><div class="fl">Jar Test Protocol</div>
-Round 1: Hold alum dose constant → vary pH → find lowest turbidity → optimal pH<br>
-Round 2: Hold pH at optimal → vary alum dose → find lowest turbidity → optimal dose
-</div>`},
-
-{s:0,t:'quiz',title:'Alum Stoichiometry',
-q:'When alum is added to water, how many moles of bicarbonate (HCO₃⁻) are consumed per mole of alum?',
-cs:['1 mole','3 moles','6 moles','9 moles'],
-ok:2,
-exp:'The alum-bicarbonate reaction yields a 1:6 mole ratio — one mole of alum consumes six moles of HCO₃⁻. This is the key number for calculating alkalinity consumption.'},
-
-{s:0,t:'math',title:'Alkalinity Consumed — Full Calculation',gen:'alkalinity',
-steps:[],q:'',cs:[],ok:0,exp:''},
-
-// ── SECTION 1 ──────────────────────────────────
-{s:1,t:'lesson',title:'Theoretical Oxygen Demand (ThOD)',body:`
-<p>When organic waste enters water, bacteria break it down and consume dissolved oxygen (DO). If enough oxygen is consumed, fish die. We quantify this demand two ways.</p>
-<p><strong>ThOD</strong> is purely stoichiometric — assume complete combustion and count the O₂ required. Write the balanced oxidation reaction and use the mole ratio to get a mass ratio.</p>
-<div class="fbox"><div class="fl">ThOD — Ethanol (C₂H₆O, MW = 46 g/mol)</div>
-C₂H₆O + 3 O₂ → 2 CO₂ + 3 H₂O<br>
-Mole ratio: 3 mol O₂ per mol ethanol<br>
-Mass ratio: (3×32)/46 = 96/46 = 2.087 g O₂ per g ethanol
-</div>`},
-
-{s:1,t:'math',title:'ThOD of Ethanol',gen:'thod',
-steps:[],q:'',cs:[],ok:0,exp:''},
-
-{s:1,t:'lesson',title:'Biochemical Oxygen Demand (BOD)',body:`
-<p><strong>BOD</strong> is measured in the lab — bacteria actually oxidize organic material and you record how much O₂ they use. Unlike ThOD, bacteria never fully oxidize everything, so BOD approaches an ultimate value (L₀) asymptotically.</p>
-<div class="fbox"><div class="fl">BOD Equation</div>
-BOD_t = L₀ (1 − e^(−kt))<br><br>
-L₀ = ultimate BOD  |  k = BOD rate constant (day⁻¹)  |  t = time (days)
-</div>
-<p>Standard test: <strong>BOD₅</strong> runs 5 days. Rearrange to find L₀:</p>
-<p><span class="hl">L₀ = BOD₅ / (1 − e^(−5k))</span></p>`},
-
-{s:1,t:'quiz',title:'Solving for Ultimate BOD',
-q:'You know BOD₅ and k. Which expression correctly gives the ultimate BOD (L₀)?',
-cs:['L₀ = BOD₅ × k','L₀ = BOD₅ / (1 − e^(−5k))','L₀ = BOD₅ × e^(−5k)','L₀ = BOD₅ × (1 + 5k)'],
-ok:1,
-exp:'Rearrange BOD_t = L₀(1−e^(−kt)) at t=5: L₀ = BOD₅/(1−e^(−5k)). The denominator is always less than 1, so L₀ is always larger than BOD₅ — there is always more oxygen demand remaining at day 5.'},
-
-{s:1,t:'math',title:'Temperature Correction of k',gen:'tempCorr',
-steps:[],q:'',cs:[],ok:0,exp:''},
-
-// ── SECTION 2 ──────────────────────────────────
-{s:2,t:'lesson',title:'Mixing Wastewater into a River',body:`
-<p>When wastewater enters a river, the two streams mix. Before modeling downstream effects, you need conditions right after mixing — combined flow, DO, and BOD.</p>
-<p>Use the <strong>flow-weighted average</strong> for any concentration:</p>
-<div class="fbox"><div class="fl">Flow-Weighted Mixing</div>
-C_mix = (Q_w × C_w  +  Q_r × C_r) / (Q_w + Q_r)
-</div>
-<p>Applies to DO, ultimate BOD (L_a), temperature — anything. <strong>Before mixing BOD</strong>, temperature-correct k and convert BOD₅ → L₀ first.</p>`},
-
-{s:2,t:'math',title:'DO After Mixing',gen:'doMix',
-steps:[],q:'',cs:[],ok:0,exp:''},
-
-{s:2,t:'math',title:'Ultimate BOD of Wastewater',gen:'ultimateBOD',
-steps:[],q:'',cs:[],ok:0,exp:''},
-
-{s:2,t:'lesson',title:'The DO Sag Curve',body:`
-<p>After mixing, two competing processes occur as water flows downstream:</p>
-<p><strong>Deoxygenation</strong> (rate k_d): bacteria consume O₂ breaking down BOD — DO drops.<br>
-<strong>Reaeration</strong> (rate k_r): O₂ from the atmosphere dissolves back in — DO recovers.</p>
-<p>Initially deoxygenation wins. Eventually reaeration catches up. The minimum DO point is the <strong>critical point</strong>.</p>
-<div class="fbox"><div class="fl">Critical Time (t_c)</div>
-t_c = [1/(k_r − k_d)] × ln[(k_r/k_d) × (1 − D_a(k_r − k_d)/(k_d × L_a))]<br><br>
-D_a = DO_sat − DO_mix  (initial deficit)<br>
-L_a = initial ultimate BOD after mixing<br>
-x_c = v × t_c  (critical location)
-</div>`},
-
-{s:2,t:'quiz',title:'DO Sag — The Critical Point',
-q:'What physically happens at the critical point on the DO sag curve?',
-cs:['The wastewater has completely mixed with the river','BOD is fully consumed and equals zero','The rate of deoxygenation equals the rate of reaeration — DO is at its minimum','Dissolved oxygen returns to its full saturation value'],
-ok:2,
-exp:'At the critical point, deoxygenation rate equals reaeration rate and the curve bottoms out. Before it, deoxygenation dominates and DO falls. After it, reaeration dominates and DO recovers. Finding this minimum is the main goal of the DO sag analysis.'},
-
-// ── SECTION 3 ──────────────────────────────────
-{s:3,t:'lesson',title:'Nitrogenous BOD (NBOD)',body:`
-<p>Carbonaceous BOD covers organic carbon. But nitrogen compounds also consume oxygen when bacteria oxidize them — called <strong>nitrification</strong>. Ammonia (NH₃) is oxidized to nitrate (NO₃⁻). The oxygen demand from this process is <strong>NBOD</strong>.</p>
-<div class="fbox"><div class="fl">Key Ratio</div>
-4.57 g O₂ consumed per gram of nitrogen (N) oxidized
-</div>
-<p>Concentrations reported <strong>"as nitrogen"</strong> (NH₃-N) mean the value is the mass of N only — not the whole molecule. "45 mg/L NH₃-N" = 45 mg/L of N. Apply the 4.57 factor directly to this N concentration — no MW conversion needed.</p>`},
-
-{s:3,t:'math',title:'NBOD Calculation',gen:'nbod',
-steps:[],q:'',cs:[],ok:0,exp:''},
-
-// ── SECTION 4 ──────────────────────────────────
-{s:4,t:'lesson',title:'SO₂ Neutralization with Soda Ash',body:`
-<p>SO₂ from industrial processes is treated by <strong>wet scrubbing</strong> — injecting a neutralizing chemical into exhaust. Soda ash (Na₂CO₃) is a common choice.</p>
-<div class="fbox"><div class="fl">Neutralization Reaction</div>
-SO₂ + Na₂CO₃ → Na₂SO₃ + CO₂<br>
-MW: SO₂ = 64 g/mol  |  Na₂CO₃ = 106 g/mol  |  Mole ratio: 1:1<br><br>
-Mass Na₂CO₃ needed = mass SO₂ × (106/64)
-</div>`},
-
-{s:4,t:'quiz',title:'Neutralization Mole Ratio',
-q:'In the reaction SO₂ + Na₂CO₃ → Na₂SO₃ + CO₂, how many moles of Na₂CO₃ are required per mole of SO₂?',
-cs:['0.5 moles Na₂CO₃ per mole SO₂','1 mole Na₂CO₃ per mole SO₂','2 moles Na₂CO₃ per mole SO₂','The ratio depends on temperature and pressure'],
-ok:1,
-exp:'The balanced equation shows 1:1. For every mole of SO₂, exactly one mole of Na₂CO₃ is needed. The mass ratio is 106/64 = 1.656 g soda ash per gram of SO₂.'},
-
-{s:4,t:'lesson',title:'Converting ppm to mg/m³',body:`
-<p>Gas concentrations are reported in <strong>ppm (parts per million by volume)</strong>, but engineering calculations use <strong>mg/m³</strong>. The conversion uses the ideal gas law.</p>
-<div class="fbox"><div class="fl">Conversion Formula</div>
-C (mg/m³) = ppm × 10⁻⁶ × MW × P / (R × T_K) × 1000<br><br>
-P in Pascals  |  T_K in Kelvin  |  R = 8.314 Pa·m³/(mol·K)<br>
-T(K) = T(°C) + 273  |  1 atm = 101,325 Pa
-</div>`},
-
-{s:4,t:'math',title:'ppm → mg/m³',gen:'ppmConv',
-steps:[],q:'',cs:[],ok:0,exp:''},
-
-// ── SECTION 5 ──────────────────────────────────
-{s:5,t:'lesson',title:'Atmospheric Stability and Plume Behavior',body:`
-<p>How a smokestack plume disperses depends on <strong>atmospheric stability</strong> — how temperature changes with altitude. When temperature <em>increases</em> with altitude (the reverse of normal), that's a <strong>temperature inversion</strong>. Inversions trap air and pollutants.</p>
-<div class="fbox"><div class="fl">Key Plume Types</div>
-<strong>Fumigation</strong>: Inversion ABOVE stack, unstable below<br>
-→ Plume trapped and forced DOWN to the ground — worst case for nearby receptors<br><br>
-<strong>Lofting</strong>: Inversion BELOW stack, unstable above<br>
-→ Plume rises freely, cannot penetrate inversion downward — best case
-</div>`},
-
-{s:5,t:'quiz',title:'Identify the Plume — Scenario A',
-q:'A temperature-altitude graph shows temperature increasing with altitude from the ground up through the stack height (inversion layer extends above the stack). What type of plume results?',
-cs:['Lofting — plume rises freely and is confined above','Fumigation — plume is trapped and forced toward the ground','Coning — plume spreads symmetrically in neutral conditions','Looping — plume follows turbulent up-and-down paths'],
-ok:1,
-exp:'Fumigation. The inversion is above the stack and unstable air below mixes the plume downward. This is the worst case — high concentrations reach ground level close to the source.'},
-
-{s:5,t:'quiz',title:'Identify the Plume — Scenario B',
-q:'A temperature-altitude graph shows temperature decreasing normally near the ground, then abruptly starting to increase at an altitude just below the stack top (inversion is below the stack). What type of plume results?',
-cs:['Fumigation — plume is driven toward the ground','Coning — symmetric Gaussian dispersion','Lofting — plume rises into unstable air and cannot return downward through the inversion','Fanning — plume spreads only horizontally'],
-ok:2,
-exp:'Lofting. The inversion is below the stack, so the plume rises into the unstable air above and is physically blocked from descending back through the inversion layer. Ground-level concentrations near the source are very low.'},
-
-// ── SECTION 6 ──────────────────────────────────
-{s:6,t:'lesson',title:'The Steady-State Box Model',body:`
-<p>The box model treats a city as a box: length L (along wind), width W (across wind), mixing height H. Clean wind blows in one side; polluted air exits the other.</p>
-<div class="fbox"><div class="fl">Steady-State Concentration</div>
-C_e = E / (u × H × W)<br><br>
-E = emission rate (mass/time)  |  u = wind speed  |  H = mixing height  |  W = box width
-</div>
-<p>Comes from a mass balance at steady state: mass emitted = mass flushed out by wind. Box length L cancels — concentration depends on how fast wind flushes the cross-section, not how deep the box is.</p>`},
-
-{s:6,t:'quiz',title:'Box Model Variables',
-q:'In the steady-state formula C_e = E / (u × H × W), which dimension does NOT appear?',
-cs:['Wind speed (u)','Box length in the downwind direction (L)','Mixing height (H)','Box width perpendicular to wind (W)'],
-ok:1,
-exp:'Box length L cancels during derivation. When emission rate E is expressed per unit area and steady-state mass balance is solved, L appears in both numerator and denominator and drops out. What matters is the cross-section (H × W) that wind flushes.'},
-
-{s:6,t:'math',title:'Box Model — Steady-State Concentration',gen:'boxModel',
-steps:[],q:'',cs:[],ok:0,exp:''},
-
-// ── SECTION 7 ──────────────────────────────────
-{s:7,t:'lesson',title:'The Gaussian Dispersion Model',body:`
-<p>The box model assumes perfect mixing. In reality, plumes spread in a bell-curve (Gaussian) shape. The full model gives concentration at any point (x, y, z) downwind:</p>
-<div class="fbox"><div class="fl">Gaussian Plume (full form)</div>
-C = [Q/(2π u σ_y σ_z)] × exp[−y²/(2σ_y²)] × [exp(−(z−H)²/(2σ_z²)) + exp(−(z+H)²/(2σ_z²))]<br><br>
-σ_y, σ_z = horizontal/vertical dispersion coefficients<br>
-H = effective stack height = h_stack + ΔH (plume rise)
-</div>
-<p>At y=0, z=0 (ground-level centerline), the two reflected terms combine and cancel the 2 in the denominator, simplifying to: <span class="hl">C = Q/(π u σ_y σ_z) × exp(−H²/(2σ_z²))</span></p>`},
-
-{s:7,t:'quiz',title:'Centerline Simplification',
-q:'For ground-level centerline concentration (y = 0, z = 0), what happens to the first exponential term exp[−y²/(2σ_y²)]?',
-cs:['It equals zero and eliminates the entire equation','It becomes e⁰ = 1 and drops out, simplifying the equation','It becomes e^(−H²/2σ_y²)','It must be computed using the σ_y graph before proceeding'],
-ok:1,
-exp:'At y=0, the exponent is −0²/(2σ_y²) = 0, so the term is e⁰ = 1 and disappears. The centerline (y=0) is where concentration is maximum because the Gaussian distribution peaks at the center.'},
-
-{s:7,t:'lesson',title:'Stability Classes and Dispersion Coefficients',body:`
-<p>σ_y and σ_z grow with downwind distance. How fast depends on <strong>atmospheric stability class</strong>:</p>
-<div class="fbox"><div class="fl">Stability Classes</div>
-A/B — Unstable: sunny, light winds → fast spread, lower peak concentrations<br>
-C/D — Neutral: overcast or windy → moderate spread<br>
-E/F — Stable: calm night, clear sky → slow spread, higher concentrations<br><br>
-Empirical: σ_y = a·x^b  |  σ_z = c·x^d + f<br>
-(constants depend on stability class; x = downwind distance in km)
-</div>
-<p>Effective stack height: H = h_physical + ΔH, where ΔH comes from Briggs' plume rise equations accounting for buoyancy and exit velocity.</p>`},
-
-{s:7,t:'math',title:'Gaussian — Ground-Level Centerline Concentration',gen:'gaussian',
-steps:[],q:'',cs:[],ok:0,exp:''}
+// S0
+{s:0,t:'lesson',title:'Why Raw Water Needs Treatment',body:`<p>Raw water contains tiny suspended particles called <strong>colloids</strong> (0.001&ndash;1 &mu;m). They never settle on their own because every colloid carries a <strong>negative surface charge</strong>. Like charges repel &mdash; particles push each other away before they can clump.</p><p><strong>Coagulation</strong> neutralizes that charge. With repulsion removed, particles collide, stick into "floc," and settle. Turbidity is measured in <strong>NTU</strong> &mdash; lower is better.</p>`},
+{s:0,t:'quiz',title:'Particle Stability',q:'What prevents colloidal particles in raw water from naturally settling over time?',cs:['They are too dense and generate turbulence','They carry the same negative surface charge and electrostatically repel each other','They are dissolved, not suspended','Water surface tension holds them in place'],ok:1,exp:'Colloids carry a negative surface charge. Electrostatic repulsion prevents the close contact needed for aggregation. Coagulation neutralizes this charge so particles can finally clump.'},
+{s:0,t:'lesson',title:'Alum Chemistry and the Jar Test',body:`<p><strong>Alum</strong> (Al2(SO4)3&middot;14H2O, MW = 594 g/mol) reacts with bicarbonate alkalinity (HCO3&mdash;) to form floc that captures turbidity particles.</p><p>Critical stoichiometry: <span class="hl">1 mol alum consumes 6 mol HCO3-</span>.</p><p>A <strong>jar test</strong> finds optimal conditions at bench scale:</p><div class="fbox"><div class="fl">Jar Test Protocol</div>Round 1: Fix dose, vary pH &rarr; lowest turbidity &rarr; optimal pH<br>Round 2: Fix pH, vary dose &rarr; lowest turbidity &rarr; optimal dose</div>`},
+{s:0,t:'quiz',title:'Alum Stoichiometry',q:'How many moles of HCO3- are consumed per mole of alum?',cs:['1 mole','3 moles','6 moles','9 moles'],ok:2,exp:'The reaction yields a 1:6 mole ratio. One mole of alum consumes six moles of HCO3-.'},
+{s:0,t:'math',title:'Alkalinity Consumed',gen:'alkalinity',steps:[],q:'',cs:[],ok:0,exp:''},
+// S1
+{s:1,t:'lesson',title:'Theoretical Oxygen Demand (ThOD)',body:`<p>When organic waste enters water, bacteria consume dissolved oxygen (DO) breaking it down. <strong>ThOD</strong> is stoichiometric &mdash; assume complete combustion and count O2 required from the balanced mole ratio.</p><div class="fbox"><div class="fl">ThOD Example &mdash; Ethanol (C2H6O)</div>C2H6O + 3 O2 &rarr; 2 CO2 + 3 H2O<br>MW ethanol = 46 g/mol  |  3 mol O2 = 96 g/mol<br>Mass ratio = 96/46 = 2.087 g O2 per g ethanol</div>`},
+{s:1,t:'math',title:'ThOD of Ethanol',gen:'thod',steps:[],q:'',cs:[],ok:0,exp:''},
+{s:1,t:'lesson',title:'Biochemical Oxygen Demand (BOD)',body:`<p><strong>BOD</strong> is measured in the lab &mdash; bacteria actually oxidize material and you record O2 used. BOD approaches an ultimate value L0 asymptotically.</p><div class="fbox"><div class="fl">BOD Equation</div>BOD_t = L0 (1 - e^(-kt))<br><br>L0 = ultimate BOD  |  k = rate constant (day-1)  |  t = days</div><p>Standard 5-day test. Rearrange to find L0: <span class="hl">L0 = BOD5 / (1 - e^(-5k))</span></p>`},
+{s:1,t:'quiz',title:'Solving for Ultimate BOD',q:'Which expression correctly gives the ultimate BOD (L0) from a 5-day BOD measurement?',cs:['L0 = BOD5 x k','L0 = BOD5 / (1 - e^(-5k))','L0 = BOD5 x e^(-5k)','L0 = BOD5 x (1 + 5k)'],ok:1,exp:'Rearrange BOD_t = L0(1-e^(-kt)) at t=5. The denominator is always < 1, so L0 always exceeds BOD5.'},
+{s:1,t:'math',title:'Temperature Correction of k',gen:'tempCorr',steps:[],q:'',cs:[],ok:0,exp:''},
+// S2
+{s:2,t:'lesson',title:'Mixing Wastewater into a River',body:`<p>When wastewater enters a river, use the <strong>flow-weighted average</strong> for any concentration at the mixing point:</p><div class="fbox"><div class="fl">Flow-Weighted Mixing</div>C_mix = (Qw&times;Cw + Qr&times;Cr) / (Qw + Qr)</div><p>Applies to DO, ultimate BOD (La), temperature. <strong>Convert BOD5 &rarr; L0 first</strong> using temperature-corrected k, then mix.</p>`},
+{s:2,t:'math',title:'DO After Mixing',gen:'doMix',steps:[],q:'',cs:[],ok:0,exp:''},
+{s:2,t:'math',title:'Ultimate BOD from BOD5',gen:'ultimateBOD',steps:[],q:'',cs:[],ok:0,exp:''},
+{s:2,t:'lesson',title:'The DO Sag Curve &mdash; 6 Steps',body:`<p>After mixing, <strong>deoxygenation</strong> (rate kd) drops DO while <strong>reaeration</strong> (rate kr) replenishes it. The minimum DO point is the <strong>critical point</strong>, where the two rates are equal.</p><div class="fbox"><div class="fl">Streeter-Phelps Method</div><strong>Step 1:</strong> La = flow-weighted ultimate BOD after mixing<br><strong>Step 2:</strong> BOD remaining at distance x: L_x = La &times; e^(-kd&times;t), t = x/v<br><strong>Step 3:</strong> Initial deficit: Da = DOsat - DOmix<br><strong>Step 4:</strong> tc = [1/(kr-kd)] &times; ln[(kr/kd)(1 - Da(kr-kd)/(kd&times;La))]<br><strong>Step 5:</strong> xc = v &times; tc (convert v to km/day)<br><strong>Step 6:</strong> Dc = (kd&times;La/(kr-kd))(e^(-kd&times;tc) - e^(-kr&times;tc)) + Da&times;e^(-kr&times;tc)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Min DO = DOsat - Dc</div>`},
+{s:2,t:'quiz',title:'DO Sag &mdash; Critical Point',q:'What physically happens at the critical point on the DO sag curve?',cs:['Wastewater has fully mixed with the river','BOD is fully consumed and equals zero','Deoxygenation rate equals reaeration rate &mdash; DO is at its minimum','DO returns to full saturation'],ok:2,exp:'At the critical point, deoxygenation = reaeration. The curve bottoms out here. Before: DO falls. After: DO recovers. The minimum DO must exceed regulatory standards.'},
+{s:2,t:'math',title:'Step 2 &mdash; BOD Remaining Downstream',gen:'bodRemaining',steps:[],q:'',cs:[],ok:0,exp:''},
+{s:2,t:'math',title:'Step 4 &mdash; Critical Time',gen:'criticalTime',steps:[],q:'',cs:[],ok:0,exp:''},
+{s:2,t:'math',title:'Step 5 &mdash; Critical Location',gen:'criticalLocation',steps:[],q:'',cs:[],ok:0,exp:''},
+{s:2,t:'math',title:'Step 6 &mdash; Minimum DO',gen:'maxDeficit',steps:[],q:'',cs:[],ok:0,exp:''},
+// S3
+{s:3,t:'lesson',title:'Nitrogenous BOD (NBOD)',body:`<p>Nitrogen compounds also consume oxygen during <strong>nitrification</strong> &mdash; bacteria oxidizing NH3 to NO3-. The oxygen demand is <strong>NBOD</strong>.</p><div class="fbox"><div class="fl">Key Ratio</div>4.57 g O2 consumed per gram of nitrogen (N) oxidized</div><p>Concentrations reported <strong>"as nitrogen"</strong> (NH3-N) give the mass of N only &mdash; not the whole molecule. Apply 4.57 directly, no MW conversion needed.</p>`},
+{s:3,t:'math',title:'NBOD Calculation',gen:'nbod',steps:[],q:'',cs:[],ok:0,exp:''},
+// S4
+{s:4,t:'lesson',title:'SO2 Neutralization with Soda Ash',body:`<p>SO2 from industrial processes is treated by wet scrubbing. Soda ash (Na2CO3) is a common neutralizing agent.</p><div class="fbox"><div class="fl">Neutralization Reaction</div>SO2 + Na2CO3 &rarr; Na2SO3 + CO2<br>MW: SO2 = 64 g/mol  |  Na2CO3 = 106 g/mol  |  Mole ratio: 1:1<br>Mass ratio: 106/64 = 1.656 g soda ash per g SO2</div>`},
+{s:4,t:'quiz',title:'Neutralization Mole Ratio',q:'In the reaction SO2 + Na2CO3 &rarr; Na2SO3 + CO2, how many moles of Na2CO3 are required per mole of SO2?',cs:['0.5 mol','1 mol','2 mol','Ratio depends on temperature'],ok:1,exp:'1:1 mole ratio. One mole of soda ash per mole of SO2.'},
+{s:4,t:'lesson',title:'Converting ppm to mg/m3',body:`<p>Gas concentrations are in ppmv by convention, but engineering uses mg/m3. Convert using the ideal gas law:</p><div class="fbox"><div class="fl">Conversion Formula</div>C (mg/m3) = ppm &times; 10^-6 &times; MW &times; P / (R &times; T_K) &times; 1000<br><br>R = 8.314 Pa&middot;m3/(mol&middot;K)  |  1 atm = 101,325 Pa  |  T_K = T(&deg;C) + 273</div>`},
+{s:4,t:'math',title:'ppm &rarr; mg/m3',gen:'ppmConv',steps:[],q:'',cs:[],ok:0,exp:''},
+// S5
+{s:5,t:'lesson',title:'Atmospheric Stability and Plume Types',body:`<p>Plume shape depends on <strong>atmospheric stability</strong>. A <strong>temperature inversion</strong> (temperature increasing with altitude) traps pollutants below it.</p><div class="fbox"><div class="fl">Key Plume Types</div><strong>Fumigation:</strong> Inversion ABOVE stack, unstable below<br>&rarr; Plume trapped and pushed DOWN &mdash; worst case for nearby receptors<br><br><strong>Lofting:</strong> Inversion BELOW stack, unstable above<br>&rarr; Plume rises freely, blocked from descending &mdash; best case<br><br>Coning (neutral), Looping (very unstable), Fanning (very stable)</div>`},
+{s:5,t:'quiz',title:'Identify Plume &mdash; Scenario A',q:'A T-altitude graph shows temperature increasing with altitude from the ground up past the stack height. Inversion extends above the stack. What type of plume?',cs:['Lofting &mdash; plume rises freely','Fumigation &mdash; plume is trapped and pushed to the ground','Coning &mdash; symmetric spread in neutral air','Looping &mdash; turbulent up-and-down motion'],ok:1,exp:'Fumigation. Inversion above the stack + unstable air below mixes the plume downward. High concentrations reach ground level close to the source.'},
+{s:5,t:'quiz',title:'Identify Plume &mdash; Scenario B',q:'A T-altitude graph shows temperature decreasing normally near the ground, then beginning to increase just below the stack top. Inversion is below the stack. What type?',cs:['Fumigation &mdash; plume driven toward ground','Coning &mdash; symmetric spread','Lofting &mdash; plume rises into unstable air and cannot return downward','Fanning &mdash; horizontal spread only'],ok:2,exp:'Lofting. Inversion below the stack physically blocks the plume from descending. Ground-level concentrations near the source are very low.'},
+// S6
+{s:6,t:'lesson',title:'The Steady-State Box Model',body:`<p>Model a city as a box (width W, mixing height H). Wind (speed u) blows clean air in one face; polluted air exits the other.</p><div class="fbox"><div class="fl">Steady-State Concentration</div>C_e = E / (u &times; H &times; W)<br><br>At steady state: emissions in = mass flushed out by wind</div><p>Box length L cancels during derivation &mdash; steady-state concentration depends only on the cross-section H &times; W that wind flushes.</p>`},
+{s:6,t:'quiz',title:'Box Model &mdash; Which Variable Cancels?',q:'In C_e = E / (u x H x W), which dimension of the city does NOT appear?',cs:['Wind speed (u)','Box length in the downwind direction (L)','Mixing height (H)','Box width perpendicular to wind (W)'],ok:1,exp:'L cancels during derivation. It appears in both numerator and denominator of the mass balance and drops out. What matters is the cross-section u x H x W.'},
+{s:6,t:'math',title:'Box Model &mdash; Steady-State',gen:'boxModel',steps:[],q:'',cs:[],ok:0,exp:''},
+{s:6,t:'quiz',title:'Box Model &mdash; Transient Behavior',q:'The transient box model gives C(t)/Ce = 1 - e^(-ut/L). At time t = L/u, what fraction of steady-state concentration has been reached?',cs:['About 37% of Ce','About 50% of Ce','About 63% of Ce','100% &mdash; steady state is fully reached at this moment'],ok:2,exp:'At t = L/u, the exponent becomes -1, so C/Ce = 1 - e^(-1) = 1 - 0.368 = 0.632 &asymp; 63%. This is the "one time constant" behavior &mdash; identical to RC circuits or radioactive decay. Several time constants are needed to approach steady state.'},
+// S7
+{s:7,t:'lesson',title:'The Gaussian Dispersion Model',body:`<p>Plumes spread in a bell-curve shape. At ground-level centerline (y=0, z=0), the full equation simplifies to:</p><div class="fbox"><div class="fl">Ground-Level Centerline (simplified)</div>C = Q / (&pi; u &sigma;_y &sigma;_z) &times; exp(-H^2 / (2&sigma;_z^2))<br><br>Q = emission rate  |  H = effective stack height = h_stack + &Delta;H<br>&sigma;_y, &sigma;_z = dispersion coefficients (from stability class tables)</div><p>H = h_stack + &Delta;H accounts for buoyancy and momentum of hot exhaust gases.</p>`},
+{s:7,t:'quiz',title:'Centerline Simplification',q:'For y=0, z=0, what happens to the term exp[-y^2/(2sigma_y^2)]?',cs:['It equals zero, eliminating the equation','It becomes e^0 = 1 and drops out','It becomes e^(-H^2/2sigma_y^2)','It must be read from a graph'],ok:1,exp:'At y=0, the exponent is -0^2/(2sigma_y^2) = 0, so the term is e^0 = 1. The second z-exponential (reflected image) also combines to simplify 2pi down to pi, which doubles the ground-level concentration.'},
+{s:7,t:'lesson',title:'Stability Classes and Sigma Values',body:`<p><strong>Atmospheric stability class</strong> determines how fast &sigma;_y and &sigma;_z grow with downwind distance x:</p><div class="fbox"><div class="fl">Stability Classes</div><strong>A/B</strong> &mdash; Very unstable: bright sun, light winds &rarr; fast spread, lower peak<br><strong>C/D</strong> &mdash; Neutral: overcast sky, moderate winds &rarr; moderate spread<br><strong>E/F</strong> &mdash; Stable: calm clear nights &rarr; slow spread, higher peak<br><br>Empirical: &sigma;_y = a&middot;x^b  |  &sigma;_z = c&middot;x^d + f<br>(constants from stability class tables; x = downwind distance in km)</div>`},
+{s:7,t:'quiz',title:'Choosing a Stability Class',q:'It is a sunny summer afternoon with light winds (~2 m/s). Which stability class applies?',cs:['Class A or B (unstable)','Class C or D (neutral)','Class E or F (stable)','Class D only &mdash; wind speed always determines stability'],ok:0,exp:'Strong solar radiation + light winds = Class A or B (unstable). Fast-growing sigma values mean the plume spreads quickly and peak ground-level concentrations are lower. Stable classes (E/F) apply on calm, clear nights.'},
+{s:7,t:'math',title:'Gaussian &mdash; Ground-Level Centerline',gen:'gaussian',steps:[],q:'',cs:[],ok:0,exp:''}
 ];
 
-// ═══════════════════════════════════════════════
-// SHUFFLE / REGENERATE
-// ═══════════════════════════════════════════════
 function shuffleNode(i){
   const node=L[i];
-  if(node.t!=='quiz'&&node.t!=='math')return;
-  if(node.gen&&GENS[node.gen]){
-    Object.assign(node,GENS[node.gen]());
-  } else {
-    // Save originals on first call
+  if(node.t==='lesson')return;
+  if(node.gen&&GENS[node.gen]){Object.assign(node,GENS[node.gen]());}
+  else{
     if(node._ocs===undefined){node._ocs=[...node.cs];node._ook=node.ok}
     const pairs=node._ocs.map((c,j)=>({c,isOk:j===node._ook}));
-    const shuf=sh(pairs);
-    node.cs=shuf.map(p=>p.c);
-    node.ok=shuf.findIndex(p=>p.isOk);
+    const shuf=sh(pairs);node.cs=shuf.map(p=>p.c);node.ok=shuf.findIndex(p=>p.isOk);
   }
 }
-
 function initAll(){L.forEach((_,i)=>shuffleNode(i))}
 
-// ═══════════════════════════════════════════════
-// STATE
-// ═══════════════════════════════════════════════
-let cur=0;
-let ansArr=new Array(L.length).fill(null);
+let cur=0,ansArr=new Array(L.length).fill(null);
 
 function getScore(){
-  const done=ansArr.filter(a=>a!==null);
-  const right=done.filter(a=>a.ok).length;
+  const done=ansArr.filter(a=>a!==null),right=done.filter(a=>a.ok).length;
   return{right,total:done.length,pct:done.length?Math.round(right/done.length*100):0};
 }
 
-// ═══════════════════════════════════════════════
-// RENDER
-// ═══════════════════════════════════════════════
 function render(){
   document.getElementById('pb').style.width=(cur/L.length*100)+'%';
+  const qCount=L.filter(n=>n.t!=='lesson').length;
+  document.getElementById('hcount').textContent=`E2 Lesson &middot; ${L.length} screens &middot; ${qCount} questions`;
 
-  // Sidebar
-  document.getElementById('sb').innerHTML=SECS.map((name,i)=>{
-    const idxs=L.map((n,j)=>n.s===i?j:-1).filter(j=>j>=0);
-    if(!idxs.length)return'';
-    const first=idxs[0],last=idxs[idxs.length-1];
-    let cls='sbi';
-    if(cur>=first&&cur<=last)cls+=' active';
-    else if(cur>last)cls+=' done';
-    return`<div class="${cls}"><span class="sbd"></span>${name}</div>`;
+  const LMAP={lesson:'L',quiz:'Q',math:'M'};
+  document.getElementById('sb').innerHTML=SECS.map((name,si)=>{
+    const nodes=L.map((n,j)=>({...n,idx:j})).filter(n=>n.s===si);
+    if(!nodes.length)return'';
+    const first=nodes[0].idx,last=nodes[nodes.length-1].idx;
+    let hcls='sb-head';
+    if(cur>=first&&cur<=last)hcls+=' active';
+    else if(cur>last)hcls+=' done';
+    const dots=nodes.map(n=>{
+      let cls='sbn';
+      if(n.idx===cur)cls+=' sbn-cur';
+      else if(n.t==='lesson')cls+=' sbn-lesson';
+      else if(ansArr[n.idx]!==null&&ansArr[n.idx].ok)cls+=' sbn-correct';
+      else if(ansArr[n.idx]!==null&&!ansArr[n.idx].ok)cls+=' sbn-wrong';
+      return`<button class="${cls}" onclick="jumpTo(${n.idx})" title="${n.title.replace(/&[a-z]+;/g,'').replace(/<[^>]+>/g,'')}">${LMAP[n.t]}</button>`;
+    }).join('');
+    return`<div class="sb-sec"><div class="${hcls}" onclick="jumpTo(${first})"><span class="sb-secdot"></span>${name}</div><div class="sb-nodes">${dots}</div></div>`;
   }).join('');
 
-  // Score badge
   const sc=getScore();
   const scorEl=document.getElementById('score');
   scorEl.textContent=`Score: ${sc.right} / ${sc.total}`;
@@ -614,33 +426,29 @@ function render(){
   const node=L[cur];
   const isInteractive=node.t==='quiz'||node.t==='math';
   const answered=(node.t==='lesson')||(ansArr[cur]!==null);
+  const BADGES={lesson:'<span class="badge bl">&#128214; Lesson</span>',quiz:'<span class="badge bq">&#10067; Quiz</span>',math:'<span class="badge bm">&#129518; Math</span>'};
 
-  const BADGES={lesson:'<span class="badge bl">📖 Lesson</span>',quiz:'<span class="badge bq">❓ Quiz</span>',math:'<span class="badge bm">🧮 Math</span>'};
-
-  let cardHtml=`
+  document.getElementById('stage').innerHTML=`
     <div class="card">
       <div class="card-top">
         <div style="display:flex;flex-direction:column;gap:4px">
           ${BADGES[node.t]}
           <div class="slbl">${SECS[node.s]}</div>
         </div>
-        ${isInteractive?`<button class="btn-new" id="btn-new" onclick="newProblem()">🔀 New numbers</button>`:''}
+        ${isInteractive?`<button class="btn-new" onclick="newProblem()">&#128256; New numbers</button>`:''}
       </div>
       <div class="ctitle">${node.title}</div>
       ${node.t==='lesson'?`<div class="prose">${node.body}</div>`:renderQ(node)}
       <div class="nav">
-        <button class="btn bs" onclick="go(-1)" ${cur===0?'disabled':''}>← Back</button>
+        <button class="btn bs" onclick="go(-1)" ${cur===0?'disabled':''}>&#8592; Back</button>
         <span class="ctr">${cur+1} / ${L.length}</span>
         <button class="btn bp" id="btn-next" onclick="go(1)" ${answered?'':'disabled'}>
-          ${cur===L.length-1?'🎉 Finish':'Next →'}
+          ${cur===L.length-1?'&#127881; Finish':'Next &#8594;'}
         </button>
       </div>
     </div>`;
 
-  document.getElementById('stage').innerHTML=cardHtml;
-
-  if(ansArr[cur]!==null&&isInteractive)applyAnswer(ansArr[cur].sel,node,false);
-
+  if(ansArr[cur]!==null&&isInteractive)applyAnswer(ansArr[cur].sel,node);
   if(isInteractive){
     document.querySelectorAll('.ch').forEach((btn,i)=>{
       btn.addEventListener('click',()=>{if(!ansArr[cur])handleAnswer(i,node)});
@@ -652,7 +460,7 @@ function renderQ(node){
   const LTRS=['A','B','C','D'];
   let out='';
   if(node.steps&&node.steps.length){
-    out+=`<div class="sbox">${node.steps.map(s=>`<div class="step"><div class="sn">${s.n}</div><div class="sb">${s.t}</div></div>`).join('')}</div>`;
+    out+=`<div class="sbox">${node.steps.map(s=>`<div class="step"><div class="sn">${s.n}</div><div class="sb2">${s.t}</div></div>`).join('')}</div>`;
   }
   out+=`<div class="qt">${node.q}</div>`;
   out+=`<div class="choices">${node.cs.map((c,i)=>`<button class="ch"><span class="cl">${LTRS[i]}</span><span>${c}</span></button>`).join('')}</div>`;
@@ -662,22 +470,22 @@ function renderQ(node){
 
 function renderDone(){
   const sc=getScore();
-  const msg=sc.pct>=90?'Outstanding work.':sc.pct>=70?'Solid understanding — review any red answers.':'Go back over the missed topics and retry.';
+  const msg=sc.pct>=90?'Outstanding.':sc.pct>=70?'Solid &mdash; review the red squares in the sidebar.':'Go back over missed topics using the sidebar and retry.';
   document.getElementById('stage').innerHTML=`
     <div class="card"><div class="done-scr">
-      <div class="done-icon">🎓</div>
+      <div class="done-icon">&#127891;</div>
       <div class="ctitle" style="text-align:center">Lesson Complete</div>
       <div class="done-pct">${sc.right} / ${sc.total} (${sc.pct}%)</div>
-      <div class="prose" style="text-align:center;max-width:480px;margin:0 auto 28px">${msg}<br><br>Topics: Water Treatment · O₂ Demand · DO Sag · NBOD · SO₂ · Plumes · Box Model · Gaussian Dispersion.</div>
-      <button class="btn bp" onclick="restart()" style="margin-top:8px">↺ Restart with new numbers</button>
+      <div class="prose" style="text-align:center;max-width:480px;margin:0 auto 24px">${msg}<br><br>Topics: Water Treatment &middot; O2 Demand &middot; DO Sag &middot; NBOD &middot; SO2 &middot; Plumes &middot; Box Model &middot; Gaussian.</div>
+      <button class="btn bp" onclick="restart()">&#8635; Restart with new numbers</button>
     </div></div>`;
 }
 
 function handleAnswer(sel,node){
-  const isOk=sel===node.ok;
-  ansArr[cur]={sel,ok:isOk};
-  applyAnswer(sel,node,true);
+  ansArr[cur]={sel,ok:sel===node.ok};
+  applyAnswer(sel,node);
   document.getElementById('btn-next').disabled=false;
+  render();
 }
 
 function applyAnswer(sel,node){
@@ -686,40 +494,26 @@ function applyAnswer(sel,node){
     if(i===node.ok)b.classList.add('right');
     else if(i===sel&&sel!==node.ok)b.classList.add('wrong');
   });
-  const expEl=document.getElementById('exp');
-  const isOk=sel===node.ok;
+  const isOk=sel===node.ok,expEl=document.getElementById('exp');
   expEl.className=`exp show ${isOk?'right':'wrong'}`;
-  expEl.innerHTML=`<div class="elbl">${isOk?'✓ Correct':'✗ Incorrect'}</div>${node.exp}`;
-  const sc=getScore();
-  const scorEl=document.getElementById('score');
+  expEl.innerHTML=`<div class="elbl">${isOk?'&#10003; Correct':'&#10007; Incorrect'}</div>${node.exp}`;
+  const sc=getScore(),scorEl=document.getElementById('score');
   scorEl.textContent=`Score: ${sc.right} / ${sc.total}`;
   if(sc.total>0)scorEl.style.color=sc.pct>=70?'var(--ok)':'var(--err)';
 }
 
-function go(dir){
-  cur=Math.min(Math.max(cur+dir,0),L.length);
-  render();
-  document.querySelector('main').scrollTop=0;
-  window.scrollTo(0,0);
-}
+function go(dir){cur=Math.min(Math.max(cur+dir,0),L.length);render();document.querySelector('main').scrollTop=0}
+function jumpTo(idx){cur=idx;render();document.querySelector('main').scrollTop=0}
+function newProblem(){shuffleNode(cur);ansArr[cur]=null;render();document.querySelector('main').scrollTop=0}
+function restart(){cur=0;ansArr=new Array(L.length).fill(null);initAll();render()}
 
-function newProblem(){
-  shuffleNode(cur);
-  ansArr[cur]=null;
-  render();
-  document.querySelector('main').scrollTop=0;
-}
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown'){
+    if((L[cur]&&L[cur].t==='lesson')||ansArr[cur]!==null)go(1);
+  }else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){if(cur>0)go(-1)}
+});
 
-function restart(){
-  cur=0;
-  ansArr=new Array(L.length).fill(null);
-  initAll();
-  render();
-}
-
-// ── INIT ──
-initAll();
-render();
+initAll();render();
 </script>
 </body>
 </html>
